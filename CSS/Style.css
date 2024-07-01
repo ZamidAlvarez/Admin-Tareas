@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-    background-image: url('/Imagenes/Op-01.webp'); /* Ruta a tu imagen de fondo PNG */
+    background-image: url('/Admin-Tareas/Imagenes/Op-01.webp'); /* Ruta a tu imagen de fondo PNG */
     background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
