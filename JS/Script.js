@@ -1,5 +1,10 @@
-let tareasPendientes = [];
-let tareasCompletadas = [];
+let tareasPendientes = JSON.parse(localStorage.getItem('tareasPendientes')) || [];
+let tareasCompletadas = JSON.parse(localStorage.getItem('tareasCompletadas')) || [];
+
+function guardarTareas() {
+    localStorage.setItem('tareasPendientes', JSON.stringify(tareasPendientes));
+    localStorage.setItem('tareasCompletadas', JSON.stringify(tareasCompletadas));
+}
 
 function agregarTarea() {
     const entradaTarea = document.getElementById('entradaTarea');
@@ -7,13 +12,13 @@ function agregarTarea() {
 
     if (textoTarea === '') return;
 
-    // Verificar si la tarea ya existe en tareasPendientes
     if (tareasPendientes.includes(textoTarea)) {
-        mostrarMensaje('Lo siento, esta tarea ya existe y esta en Pendientes.', 'rojo');
+        mostrarMensaje('Perdón, esta tarea ya existe y está en Pendientes.', 'rojo');
     } else {
         tareasPendientes.push(textoTarea);
-        mostrarMensaje('Tarea agregada.', 'verde');
+        mostrarMensaje('Tarea agregada.', 'azul');
         actualizarPendientes();
+        guardarTareas();
     }
 
     entradaTarea.value = '';
@@ -24,22 +29,25 @@ function completarTarea(indice) {
     tareasCompletadas.push(tarea);
     actualizarPendientes();
     actualizarCompletadas();
+    guardarTareas();
 }
 
 function eliminarTarea(indice) {
     tareasCompletadas.splice(indice, 1);
     actualizarCompletadas();
+    guardarTareas();
 }
 
 function actualizarPendientes() {
     const listaPendientes = document.getElementById('tareasPendientes');
+    if (!listaPendientes) return;
     listaPendientes.innerHTML = '';
     tareasPendientes.forEach((tarea, indice) => {
         const tareaItem = document.createElement('li');
         tareaItem.textContent = tarea;
 
         const botonCompletar = document.createElement('button');
-        botonCompletar.textContent = 'Completar';
+        botonCompletar.textContent = 'Finalizar Tarea';
         botonCompletar.onclick = () => completarTarea(indice);
 
         tareaItem.appendChild(botonCompletar);
@@ -49,6 +57,7 @@ function actualizarPendientes() {
 
 function actualizarCompletadas() {
     const listaCompletadas = document.getElementById('tareasCompletadas');
+    if (!listaCompletadas) return;
     listaCompletadas.innerHTML = '';
     tareasCompletadas.forEach((tarea, indice) => {
         const tareaItem = document.createElement('li');
@@ -67,7 +76,13 @@ function actualizarCompletadas() {
 function mostrarMensaje(mensaje, color) {
     const mensajeDiv = document.getElementById('mensaje');
     mensajeDiv.textContent = mensaje;
-    mensajeDiv.style.backgroundColor = color === 'verde' ? '#dcedc8' : '#ffcdd2'; // Verde claro o rojo claro
+    mensajeDiv.style.backgroundColor = color === 'azul' ? '#6c5dda' : '#f94880';
     mensajeDiv.style.padding = '10px';
     mensajeDiv.style.marginTop = '10px';
 }
+
+// Llamar a las funciones de actualización al cargar las páginas
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarPendientes();
+    actualizarCompletadas();
+});
