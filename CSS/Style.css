@@ -1,34 +1,45 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    background-image: url('/Imagenes/Op-01.webp'); /* Ruta a tu imagen de fondo PNG */
+    background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 header {
-    background-color: #6200ea;
-    color: white;
     padding: 20px;
     text-align: center;
+    background-image: linear-gradient(to right, #6c5dda, #f94880); /* Gradiente de mezcla de colores */
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+    border-bottom: none; /* Quita cualquier borde en la parte inferior del nav */
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Quita la línea de subrayado */
+    padding: 10px 20px;
+    background-color: #6200ea;
+    border-radius: 4px;
+    margin: 0 10px; /* Ajusta el margen entre los enlaces */
+    display: inline-block; /* Asegura que los enlaces se muestren en línea */
+}
+
+nav a:hover {
+    background-color: #3700b3;
 }
 
 main {
     padding: 20px;
-}
-
-nav a {
-    color: black; /* Cambiado a negro */
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav li {
-    margin: 10px 0;
 }
 
 .entrada-tarea {
@@ -45,17 +56,18 @@ input[type="text"] {
     border-radius: 4px;
 }
 
-button {
+button.boton-agregar {
+    font-family: 'Times New Roman', Times, serif;
     padding: 10px 20px;
-    background-color: #6200ea;
+    background-color: #6200ea; /* Mismo color que el encabezado */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #3700b3;
+button.boton-agregar:hover {
+    background-color: #3700b3; /* Color secundario al pasar el ratón */
 }
 
 .tareas {
@@ -86,6 +98,7 @@ li.completada {
 }
 
 li button {
+    font-family: 'Times New Roman', Times, serif;
     background-color: #e57373;
     border: none;
     border-radius: 4px;
@@ -96,4 +109,9 @@ li button {
 
 li button:hover {
     background-color: #d32f2f;
+}
+
+#mensaje {
+    text-align: center;
+    border-radius: 4px;
 }
