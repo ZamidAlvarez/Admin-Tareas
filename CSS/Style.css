@@ -31,7 +31,7 @@ nav a {
     color: white;
     text-decoration: none; /* Quita la línea de subrayado */
     padding: 10px 20px;
-    background-color: #6200ea;
+    background-color: #6c5dda;
     border-radius: 4px;
     margin: 0 10px; /* Ajusta el margen entre los enlaces */
     display: inline-block; /* Asegura que los enlaces se muestren en línea */
@@ -62,7 +62,7 @@ input[type="text"] {
 button.boton-agregar {
     font-family: 'Times New Roman', Times, serif;
     padding: 10px 20px;
-    background-color: #6200ea; /* Mismo color que el encabezado */
+    background-color: #6c5dda; /* Mismo color que el encabezado */
     color: white;
     border: none;
     border-radius: 4px;
