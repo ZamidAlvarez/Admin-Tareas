@@ -35,6 +35,7 @@ function completarTarea(indice) {
     const tarea = tareasPendientes.splice(indice, 1)[0];
     tarea.fechaFinalizacion = new Date().toLocaleString();
     tareasCompletadas.push(tarea);
+    mostrarMensaje(`Tarea "${tarea.texto}" finalizada.`, 'azul');
     actualizarPendientes();
     actualizarCompletadas();
     guardarTareas();
