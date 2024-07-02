@@ -81,7 +81,7 @@ function mostrarMensaje(mensaje, color) {
     mensajeDiv.style.marginTop = '10px';
 }
 
-// Llamar a las funciones de actualización al cargar las páginas
+// Llamar a las funciones de actualizacion al cargar las paginas
 document.addEventListener('DOMContentLoaded', () => {
     actualizarPendientes();
     actualizarCompletadas();
