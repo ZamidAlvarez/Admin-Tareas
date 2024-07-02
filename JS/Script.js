@@ -10,6 +10,8 @@ function agregarTarea() {
     const entradaTarea = document.getElementById('entradaTarea');
     const textoTarea = entradaTarea.value.trim();
 
+    //nota: el === sirve pa comparar valores de manera mas precisa.
+    
     if (textoTarea === '') return;
 
     if (tareasPendientes.includes(textoTarea)) {
