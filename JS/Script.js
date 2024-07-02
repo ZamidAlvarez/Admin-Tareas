@@ -10,14 +10,19 @@ function agregarTarea() {
     const entradaTarea = document.getElementById('entradaTarea');
     const textoTarea = entradaTarea.value.trim();
 
-    //nota: el === sirve pa comparar valores de manera mas precisa.
-    
+    //nota: el === sirve pa comparar valores de manera mas precisa.
+
     if (textoTarea === '') return;
 
-    if (tareasPendientes.includes(textoTarea)) {
+    const tarea = {
+        texto: textoTarea,
+        fechaCreacion: new Date().toLocaleString()
+    };
+
+    if (tareasPendientes.some(t => t.texto === textoTarea)) {
         mostrarMensaje('Perdón, esta tarea ya existe y está en Pendientes.', 'rojo');
     } else {
-        tareasPendientes.push(textoTarea);
+        tareasPendientes.push(tarea);
         mostrarMensaje('Tarea agregada.', 'azul');
         actualizarPendientes();
         guardarTareas();
@@ -28,6 +33,7 @@ function agregarTarea() {
 
 function completarTarea(indice) {
     const tarea = tareasPendientes.splice(indice, 1)[0];
+    tarea.fechaFinalizacion = new Date().toLocaleString();
     tareasCompletadas.push(tarea);
     actualizarPendientes();
     actualizarCompletadas();
@@ -46,7 +52,7 @@ function actualizarPendientes() {
     listaPendientes.innerHTML = '';
     tareasPendientes.forEach((tarea, indice) => {
         const tareaItem = document.createElement('li');
-        tareaItem.textContent = tarea;
+        tareaItem.textContent = `${tarea.texto} creada el ${tarea.fechaCreacion}`;
 
         const botonCompletar = document.createElement('button');
         botonCompletar.textContent = 'Finalizar Tarea';
@@ -63,7 +69,7 @@ function actualizarCompletadas() {
     listaCompletadas.innerHTML = '';
     tareasCompletadas.forEach((tarea, indice) => {
         const tareaItem = document.createElement('li');
-        tareaItem.textContent = tarea;
+        tareaItem.textContent = `${tarea.texto} Tarea finalizada el ${tarea.fechaFinalizacion}`;
         tareaItem.classList.add('completada');
 
         const botonEliminar = document.createElement('button');
@@ -83,7 +89,7 @@ function mostrarMensaje(mensaje, color) {
     mensajeDiv.style.marginTop = '10px';
 }
 
-// Llamar a las funciones de actualizacion al cargar las paginas
+// Llamar a las funciones de actualización al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     actualizarPendientes();
     actualizarCompletadas();
