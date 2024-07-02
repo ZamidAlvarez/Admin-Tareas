@@ -19,6 +19,7 @@ function agregarTarea() {
         fechaCreacion: new Date().toLocaleString()
     };
 
+    //condicional para verificar si la tarea ya esta creada o no en pendientes con su respectivo mensaje
     if (tareasPendientes.some(t => t.texto === textoTarea)) {
         mostrarMensaje('Perdón, esta tarea ya existe y está en Pendientes.', 'rojo');
     } else {
@@ -32,10 +33,10 @@ function agregarTarea() {
 }
 
 function completarTarea(indice) {
-    const tarea = tareasPendientes.splice(indice, 1)[0];
-    tarea.fechaFinalizacion = new Date().toLocaleString();
-    tareasCompletadas.push(tarea);
-    mostrarMensaje(`Tarea "${tarea.texto}" finalizada.`, 'azul');
+    const tarea = tareasPendientes.splice(indice, 1)[0]; // esto saca la tarea de tareas pendientes.
+    tarea.fechaFinalizacion = new Date().toLocaleString(); //añade la fecha y hora de finalizacion a la tarea.
+    tareasCompletadas.push(tarea); // mueve la tarea a la lista de tareas completadas
+    mostrarMensaje(`Tarea "${tarea.texto}" finalizada.`, 'azul'); //mensaje de tarea tales finalizada
     actualizarPendientes();
     actualizarCompletadas();
     guardarTareas();
@@ -48,12 +49,12 @@ function eliminarTarea(indice) {
 }
 
 function actualizarPendientes() {
-    const listaPendientes = document.getElementById('tareasPendientes');
-    if (!listaPendientes) return;
-    listaPendientes.innerHTML = '';
+    const listaPendientes = document.getElementById('tareasPendientes'); // obtener el elemento de la lista .
+    if (!listaPendientes) return; // pregunta si el elemento esta o no esta
+    listaPendientes.innerHTML = ''; // limpia la lista
     tareasPendientes.forEach((tarea, indice) => {
-        const tareaItem = document.createElement('li');
-        tareaItem.textContent = `${tarea.texto} creada el ${tarea.fechaCreacion}`;
+        const tareaItem = document.createElement('li'); // creacion de elemento de lista.
+        tareaItem.textContent = `${tarea.texto} creada el ${tarea.fechaCreacion}`; // establecer el contenido como texto con ese formato.
 
         const botonCompletar = document.createElement('button');
         botonCompletar.textContent = 'Finalizar Tarea';
@@ -70,7 +71,7 @@ function actualizarCompletadas() {
     listaCompletadas.innerHTML = '';
     tareasCompletadas.forEach((tarea, indice) => {
         const tareaItem = document.createElement('li');
-        tareaItem.textContent = `${tarea.texto} Tarea finalizada el ${tarea.fechaFinalizacion}`;
+        tareaItem.textContent = `${tarea.texto} Tarea finalizada el ${tarea.fechaFinalizacion}`; // cadena de texto que convierte la fecha y hora a texto y la muestra junto a el nombre de la respectiva tarea.
         tareaItem.classList.add('completada');
 
         const botonEliminar = document.createElement('button');
@@ -82,6 +83,7 @@ function actualizarCompletadas() {
     });
 }
 
+// diseño del mensaje
 function mostrarMensaje(mensaje, color) {
     const mensajeDiv = document.getElementById('mensaje');
     mensajeDiv.textContent = mensaje;
