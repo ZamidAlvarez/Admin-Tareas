@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-    background-image: url('/Admin-Tareas/Imagenes/Op-02.png'); /* Ruta a tu imagen de fondo PNG */
+    background-image: url('/Admin-Tareas/Imagenes/Op-02.png'); /* Ruta a tu imagen de fondo */
     background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
     background-position: center; /* Centra la imagen en el fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -14,7 +14,7 @@ body {
 header {
     padding: 20px;
     text-align: center;
-    background-image: linear-gradient(to right, #6c5dda, #f94880); /* Gradiente de mezcla de colores */
+    background-image: linear-gradient(to right, #6c5dda, #f94880); /* Mezcla de colores */
     color: white;
     margin: 20px;
     border-radius: 10px;
@@ -24,17 +24,17 @@ header {
 nav {
     text-align: center;
     margin-top: 20px;
-    border-bottom: none; /* Quita cualquier borde en la parte inferior del nav */
+    border-bottom: none; /* Quita cualquier borde en la parte inferior*/
 }
 
 nav a {
     color: white;
-    text-decoration: none; /* Quita la línea de subrayado */
+    text-decoration: none; /* Quita la linea de subrayado */
     padding: 10px 20px;
     background-color: #6c5dda;
     border-radius: 4px;
     margin: 0 10px; /* Ajusta el margen entre los enlaces */
-    display: inline-block; /* Asegura que los enlaces se muestren en línea */
+    display: inline-block; /* Asegura que los enlaces se muestren en linea */
 }
 
 nav a:hover {
@@ -70,7 +70,7 @@ button.boton-agregar {
 }
 
 button.boton-agregar:hover {
-    background-color: #3700b3; /* Color secundario al pasar el ratón */
+    background-color: #3700b3; /* Color secundario al pasar el raton */
 }
 
 .tareas {
