@@ -51,7 +51,7 @@ main {
     margin-bottom: 20px;
 }
 
-input[type="text"] {
+input[type="text"] { /* pa que se aplique a todos los elementos input de tipo texto*/
     width: 70%;
     padding: 10px;
     margin-right: 10px;
@@ -119,7 +119,7 @@ li button:hover {
     border-radius: 4px;
 }
 
-footer {
+footer { /* Pie de pagina*/
     text-align: center;
     background-color: #6c5dda;
     color: white;
